@@ -1,4 +1,4 @@
-import { Customer } from "@/types/customer.interface";
+import { Customer } from "@/interfaces/customer.interface";
 
 export class CustomerUtilServices {
   reorderCustomersArray(customers: Customer[], identifier: string): Customer[] {

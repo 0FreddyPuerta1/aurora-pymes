@@ -2,8 +2,8 @@
 import CustomerCard from "@/components/ui/CustomerCard";
 import Optionsbar from "@/components/ui/Optionsbar";
 import { SuggestionListComponent } from "@/components/customers/SuggestionInput";
-import { CustomerServices } from "@/services/api/customer.service";
-import { Customer } from "@/types/customer.interface";
+import { CustomerServices } from "@/services/api/customer.api.services";
+import { Customer } from "@/interfaces/customer.interface";
 import {
   faArrowAltCircleUp,
   faFileText,
@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { CustomerUtilServices } from "@/services/utils/customer.utils.services";
+import PaginatedCustomerCards from "@/components/customers/PaginatedCustomerCards";
 
 const options = [
   { icon: faPlus, optionName: "Creacion de Clientes" },
@@ -21,6 +22,7 @@ export default function Clientes() {
   const [option, setOption] = useState("");
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [userInput, setUserInput] = useState("");
+  const [itemsPerPage, setItemsPerPage] = useState<number>(10);
   const [key, setKey] = useState<number>(0);
   useEffect(() => {
     async function loadCustomers() {
@@ -58,10 +60,26 @@ export default function Clientes() {
           Buscar
         </button>
       </div>
-      <div className="flex flex-col gap-2  md:grid md:grid-cols-5" key={key}>
-        {customers.map((customer) => (
-          <CustomerCard customer={customer} key={customer.id} />
-        ))}
+      <div className="flex flex-col gap-2" key={key}>
+        <div className="flex gap-2">
+          <label>Mostrar</label>
+          <select
+            defaultValue={10}
+            onChange={(e) => {
+              setItemsPerPage(parseInt(e.target.value));
+            }}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+          </select>
+          <label>clientes por página</label>
+        </div>
+        <PaginatedCustomerCards
+          customers={customers}
+          itemsPerPage={itemsPerPage}
+        />
       </div>
     </div>
   );

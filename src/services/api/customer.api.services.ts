@@ -1,4 +1,4 @@
-import { Customer } from "@/types/customer.interface";
+import { Customer } from "@/interfaces/customer.interface";
 import axios from "axios";
 
 export class CustomerServices {

@@ -1,5 +1,5 @@
 "use client";
-import { Customer } from "@/types/customer.interface";
+import { Customer } from "@/interfaces/customer.interface";
 import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";

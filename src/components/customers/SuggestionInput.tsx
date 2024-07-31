@@ -1,5 +1,5 @@
 "use client";
-import { Customer } from "@/types/customer.interface";
+import { Customer } from "@/interfaces/customer.interface";
 import { useState, Dispatch, SetStateAction, useEffect } from "react";
 
 interface SuggestionListComponentProps {
