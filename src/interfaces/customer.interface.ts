@@ -1,5 +1,5 @@
 export interface Customer {
-  id: number;
+  id?: number;
   name: string;
   idType: string;
   idNumber: string;
@@ -10,7 +10,7 @@ export interface Customer {
   postalCode: string;
   city: string;
   country: string;
-  loyaltyPoints: number;
-  createdAt: string;
-  updatedAt: string;
+  loyaltyPoints: number | string;
+  createdAt?: string;
+  updatedAt?: string;
 }
